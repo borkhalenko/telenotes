@@ -1,14 +1,16 @@
-import telebot
+from telegram.ext import Updater, CommandHandler
 import telenotes.settings as settings
 
-_bot = telebot.TeleBot(settings.bot_settings['TOKEN'])
 
+def hello(update, context):
+    update.message.reply_text("Hello {}".format(update.message.from_user.first_name))
+
+def start(update, context):
+    update.message.reply_text("Started...")
 
 def start():
-    _bot.polling(none_stop=True)
-
-
-@_bot.message_handler(content_types=['text'])
-def repeat_all_messages(message):
-    answer = ""
-    _bot.send_message(message.chat.id, message.text)
+    _updater = Updater(settings.bot_settings['TOKEN'], use_context=True)
+    _updater.dispatcher.add_handler(CommandHandler('hello', hello))
+    _updater.dispatcher.add_handler(CommandHandler('start', start))
+    _updater.start_polling()
+    _updater.idle()

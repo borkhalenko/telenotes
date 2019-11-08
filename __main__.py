@@ -1,6 +1,7 @@
-import telenotes.telenotes_bot #as tbot
 import telenotes.bot_module as tbot
-import telenotes.settings as settings
+
+#https://core.telegram.org/bots#commands
+#https://python-telegram-bot.org/
 
 def _main():
     tbot.start()

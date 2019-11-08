@@ -3,7 +3,7 @@ import telegram
 import telegram.ext
 import telenotes.settings as ts
 
-
+#https://python-telegram-bot.org/
 class TelenotesBot:
     #_bot = telebot.TeleBot(ts.bot_settings['TOKEN'])
     '''
